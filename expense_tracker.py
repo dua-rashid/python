@@ -26,8 +26,9 @@ def save_data(expenses):
 def add_expenses(expenses):
     name=input("enter expense name: ")
     amount=float(input("enter amount: "))
-    category=input("enter category: ")
+    category=input("enter category (Food/ Transport/ Bills/ Shopping/ Education): ")
     expenses.append([name, amount, category])
+    print("Expenses added!")
 
 #view expenses
 def view_expenses(expenses):
@@ -40,7 +41,34 @@ def delete_expenses(expenses):
     view_expenses(expenses)
     try:
         index=int(input("enter number to delete: ")) - 1
-        if
+        if 0<=index < len(expenses):
+            removed=expenses.pop(index)
+            print("deleted:" , removed[0])
+        else:
+            print("invalid number!")
+    except:
+        print("invalid input!")
+
+#Category Analysis
+def category_analysis(expenses):
+    data={}
+    for exp in expenses:
+        cat =exp[2]
+        amt =exp[1]
+        data[cat] =data.get(cat, 0) + amt
+
+    print("")
+    for k, v in data.items():
+        print(k, ":", v)
+
+    if data:
+        max_cat = max(data, key=data.get)
+        print("most spending category:" , max_cat)
+
+
+
+      
+    
 
 
 
