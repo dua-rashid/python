@@ -23,7 +23,7 @@ def save_data(expenses):
         writer.writerows(expenses)
 
 #add expenses
-def add_expenses(expenses):
+def add_expense(expenses):
     name=input("enter expense name: ")
     amount=float(input("enter amount: "))
     category=input("enter category (Food/ Transport/ Bills/ Shopping/ Education): ")
@@ -37,7 +37,7 @@ def view_expenses(expenses):
         total += exp[1]
 
 #delete expenses
-def delete_expenses(expenses):
+def delete_expense(expenses):
     view_expenses(expenses)
     try:
         index=int(input("enter number to delete: ")) - 1
@@ -85,8 +85,42 @@ def insights (expenses):
         return
     highest=max(expenses, key=lambda x: x[1])
     print("highest expense:", highest[0], "-", highest[1])
-          
-    
+
+#main menu
+def main():
+    expenses = load_data()
+
+    while True:
+        print("smart expenses tracker")
+        print("1. Add Expenses")
+        print("2. View Expenses")
+        print("3. Delete Expense")
+        print("4. Category Analysis")
+        print("5. Budget Cheak")
+        print("6. Insights")
+        print("7. Save & Exit")
+
+        choice=input("enter choice: ")
+
+        if choice== "1":
+            add_expense(expenses)
+        elif choice== "2":
+            view_expenses(expenses)   
+        elif choice== "3":
+            delete_expense(expenses)
+        elif choice== "4":
+            category_analysis(expenses)
+        elif choice== "5":
+            budget_check(expenses)
+        elif choice== "6":
+            insights(expenses)
+        elif choice== "7":
+            save_data(expenses)
+            print("Data saved. Goodbye!")
+            break
+        else:
+            print("invalid choice!") 
+              
 
 
 
