@@ -76,7 +76,16 @@ def budget_check(expenses):
         else:
             print("you are within your budget.")
     except:
-        print("invalid input!")        
+        print("invalid input!")  
+
+#smaert insight
+def insights (expenses):
+    if not expenses:
+        print("no data available!")
+        return
+    highest=max(expenses, key=lambda x: x[1])
+    print("highest expense:", highest[0], "-", highest[1])
+          
     
 
 
