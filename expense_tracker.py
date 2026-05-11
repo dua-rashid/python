@@ -57,13 +57,27 @@ def category_analysis(expenses):
         amt =exp[1]
         data[cat] =data.get(cat, 0) + amt
 
-    print("")
+    print("category analysis")
     for k, v in data.items():
         print(k, ":", v)
 
     if data:
         max_cat = max(data, key=data.get)
         print("most spending category:" , max_cat)
+
+#budget check
+def budget_check(expenses):
+    try:
+        budget=float(input("enter your budget"))
+        total=sum(exp[1] for exp in expenses)
+        print("total spending:", total)
+        if total > budget:
+            print("you exceed your budget!")
+        else:
+            print("you are within your budget.")
+    except:
+        print("invalid input!")        
+    
 
 
 
